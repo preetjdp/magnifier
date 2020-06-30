@@ -1,6 +1,6 @@
 name: magnifier
-description: A Flutter plackage that a Magnifying Glass to your App.
-version: 0.0.3
+description: A Flutter Package that adds a Magnifying Glass to your App.
+version: 0.0.4
 repository: https://github.com/preetjdp/magnifier
 # homepage:
 
