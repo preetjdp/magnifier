@@ -22,42 +22,54 @@ class Magnifier extends StatefulWidget {
 }
 
 class _MagnifierState extends State<Magnifier> {
+  Size _magnifierSize;
+  double _scale;
+  BorderRadius _radius;
+
   Offset _magnifierPosition = Offset(0, 0);
   Matrix4 matrix = Matrix4.identity();
 
   @override
   void initState() {
+    _magnifierSize = widget.size;
+    _scale = widget.scale;
+    _radius = BorderRadius.circular(_magnifierSize.longestSide);
     matrix = Matrix4.identity()..scale(widget.scale);
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
-    Size _magnifierSize = widget.size;
-    double _scale = widget.scale;
-    BorderRadius _radius = BorderRadius.circular(_magnifierSize.longestSide);
+  void didUpdateWidget(Magnifier oldWidget) {
+    if (oldWidget.size != widget.size) {
+      _magnifierSize = widget.size;
+      _radius = BorderRadius.circular(_magnifierSize.longestSide);
+    }
+    if (oldWidget.scale != widget.scale) {
+      _scale = widget.scale;
+      matrix = Matrix4.identity()..scale(_scale);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     void _onPanUpdate(DragUpdateDetails dragDetails) {
       setState(() {
         _magnifierPosition = dragDetails.globalPosition -
             dragDetails.delta -
             _magnifierSize.center(Offset.zero) / 2;
-        print("POSN => " + _magnifierPosition.toString());
-        final Matrix4 newMatrix = Matrix4.identity();
-        final Offset centerOriginTranslation =
-            Alignment.center.alongSize(_magnifierSize);
-        print("CNETER Trans => " + centerOriginTranslation.toString());
-        newMatrix.translate(_magnifierPosition.dx + (_magnifierSize.width / 2),
-            _magnifierPosition.dy + (_magnifierSize.height / 2));
-        newMatrix.scale(_scale, _scale);
-        newMatrix.translate(
-            -(_magnifierPosition.dx + (_magnifierSize.width / 2)),
-            -(_magnifierPosition.dy + (_magnifierSize.height / 2)));
+        // print(
+        //     "POSN => ${_magnifierPosition.toString()}  GLOBAL POSN ==> ${dragDetails.globalPosition.toString()} DELTA ==> ${dragDetails.delta.toString()} END ==> ${_magnifierSize / 2}");
+        double newX = _magnifierPosition.dx + (_magnifierSize.width / 2);
+        double newY = _magnifierPosition.dy + (_magnifierSize.height / 2);
+        final Matrix4 newMatrix = Matrix4.identity()
+          ..translate(newX, newY)
+          ..scale(_scale, _scale)
+          ..translate(-newX, -newY);
+
         matrix = newMatrix;
       });
     }
-
-    print(widget.enabled);
 
     return Stack(
       alignment: Alignment.center,

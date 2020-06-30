@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.2] - 3-/6/2020
 
-* Have a basic magnifier Working.
+- Made the code cleaner.
+- Upadtes values when properties changes.
+
+## [0.0.1] - 30/6/2020
+
+- Have a basic magnifier Working.
