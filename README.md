@@ -24,21 +24,21 @@ class MyApp extends StatelessWidget {
 
 ### `scale`
 
-The amount by which the content below scaled in. (Or Zoomed In)
+The amount by which the content below scaled in (Or Zoomed In).
 
-Default Value ==> `1.2`
+Default Value ==> `1.2` (**double**)
 
 ### `size`
 
 The size of the Magnifying Glass
 
-Default Value ==> `Size(80,80)`
+Default Value ==> `Size(80,80)` (**Size**)
 
 ### Enabled
 
 To show the Magnifying Glass or Not.
 
-Default Value ==> `true`
+Default Value ==> `true` (**bool**)
 
 ## Limitations
 
