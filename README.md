@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
 ```
 
 ## Demo
-![CScreen Capture](./capture/capture.gif)
+
+<p align="center">
+  <img height="350px" src="./capture/capture.gif" />
+</p>
 
 ## Properties
 
