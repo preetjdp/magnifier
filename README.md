@@ -1,14 +1,47 @@
 # magnifier
 
-A new Flutter package project.
+This Flutter Plugin allows you to add a Magnifying Glass 🔍 to you Application.
 
-## Getting Started
+## Quickstart
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```dart
+void main() => runApp(MyApp());
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Magnifier(
+        child: MaterialApp(
+      title: 'Flutter Demo',
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    ));
+  }
+}
+
+```
+
+## Properties
+
+### `scale`
+
+The amount by which the content below scaled in. (Or Zoomed In)
+
+Default Value ==> `1.2`
+
+### `size`
+
+The size of the Magnifying Glass
+
+Default Value ==> `Size(80,80)`
+
+### Enabled
+
+To show the Magnifying Glass or Not.
+
+Default Value ==> `true`
+
+## Limitations
+
+The package currently **does not work on the web** because of a bug upstream.
+
+Track it (here)[https://github.com/flutter/flutter/issues/45213].

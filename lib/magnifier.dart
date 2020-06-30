@@ -3,6 +3,19 @@ library magnifier;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+/// A Widget that adds a Magnifying Glass 🔍.
+///
+/// ```dart
+/// class MyApp extends StatelessWidget {
+///   @override
+///   Widget build(BuildContext context) {
+///     return Magnifier(
+///         child: MaterialApp(
+///       home: ...
+///     ));
+///   }
+/// }
+/// ```
 class Magnifier extends StatefulWidget {
   final Widget child;
   final double scale;
