@@ -36,7 +36,7 @@ Default Value ==> `Size(80,80)` (**Size**)
 
 ### Enabled
 
-To show the Magnifying Glass or Not.
+Weather or not to show the Magnifying Glass.
 
 Default Value ==> `true` (**bool**)
 

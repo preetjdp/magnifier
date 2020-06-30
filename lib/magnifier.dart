@@ -16,6 +16,10 @@ import 'package:flutter/material.dart';
 ///   }
 /// }
 /// ```
+///
+/// - `scale` : The amount by which the content below scaled in (Or Zoomed In).
+/// - `size` : The size of the Magnifying Glass.
+/// - `enabled` : Weather or not to show the Magnifying Glass.
 class Magnifier extends StatefulWidget {
   final Widget child;
   final double scale;
