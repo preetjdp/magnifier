@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
 
 ```
 
+## Demo
+![CScreen Capture](./capture/capture.gif)
+
 ## Properties
 
 ### `scale`
@@ -44,4 +47,4 @@ Default Value ==> `true` (**bool**)
 
 The package currently **does not work on the web** because of a bug upstream.
 
-Track it (here)[https://github.com/flutter/flutter/issues/45213].
+Track it [here](https://github.com/flutter/flutter/issues/45213).
