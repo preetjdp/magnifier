@@ -14,10 +14,12 @@ class _MyAppState extends State<MyApp> {
   bool enabled = true;
   double size = 40;
   double scale = 1.2;
+  bool useCrossHair = true;
   @override
   Widget build(BuildContext context) {
     return Magnifier(
       enabled: enabled,
+      painter: useCrossHair ? CrosshairMagnifierPainter(color: Colors.red,strokeWidth: 30) : MagnifierPainter(strokeWidth: 20),
       scale: scale,
       size: Size(size, size),
       child: MaterialApp(
@@ -31,13 +33,25 @@ class _MyAppState extends State<MyApp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(child: MyHomePage(title: 'Magnifier Demo')),
-              RaisedButton(
-                onPressed: () {
-                  setState(() {
-                    enabled = !enabled;
-                  });
-                },
-                child: Text(enabled ? "Disable" : "Enable"),
+              Row(
+                children: [
+                  RaisedButton(
+                    onPressed: () {
+                      setState(() {
+                        enabled = !enabled;
+                      });
+                    },
+                    child: Text(enabled ? "Disable" : "Enable"),
+                  ),
+                  RaisedButton(
+                    onPressed: () {
+                      setState(() {
+                        useCrossHair = !useCrossHair;
+                      });
+                    },
+                    child: Text("Toggle Crosshair"),
+                  ),
+                ],
               ),
               Text("Size : ${size.toStringAsFixed(2)}"),
               Slider(
