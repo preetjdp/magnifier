@@ -1,7 +1,10 @@
 library magnifier;
 
+export 'package:magnifier/magnifierPainters.dart';
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:magnifier/magnifierPainters.dart';
 
 /// A Widget that adds a Magnifying Glass 🔍.
 ///
@@ -20,17 +23,36 @@ import 'package:flutter/material.dart';
 /// - `scale` : The amount by which the content below scaled in (Or Zoomed In).
 /// - `size` : The size of the Magnifying Glass.
 /// - `enabled` : Weather or not to show the Magnifying Glass.
+/// - `painter` : Provide your own Custom Painter to tweak the
+/// look of the Mangifying Glass.
+/// Look at `CrosshairMagnifierPainter`
 class Magnifier extends StatefulWidget {
+  /// The widget below this widget in the tree.
+  ///
+  /// {@macro flutter.widgets.child}
   final Widget child;
+
+  /// - `scale` : The amount by which the content below scaled in (Or Zoomed In).
   final double scale;
+
+  /// - `size` : The size of the Magnifying Glass.
   final Size size;
+
+  /// - `enabled` : Weather or not to show the Magnifying Glass.
   final bool enabled;
+
+  /// - `painter` : Provide your own Custom Painter to tweak the
+  /// look of the Mangifying Glass.
+  ///
+  /// Look at `CrosshairMagnifierPainter`
+  final CustomPainter painter;
 
   const Magnifier(
       {@required this.child,
       this.enabled = true,
       this.scale = 1.2,
       this.size = const Size(80, 80),
+      this.painter = const MagnifierPainter(),
       Key key})
       : super(key: key);
 
@@ -102,12 +124,9 @@ class _MagnifierState extends State<Magnifier> {
                 onPanUpdate: _onPanUpdate,
                 child: BackdropFilter(
                   filter: ImageFilter.matrix(matrix.storage),
-                  child: Container(
-                    height: _magnifierSize.height,
-                    width: _magnifierSize.width,
-                    decoration: BoxDecoration(
-                        borderRadius: _radius,
-                        border: Border.all(color: Colors.black, width: 2)),
+                  child: CustomPaint(
+                    painter: widget.painter,
+                    size: _magnifierSize,
                   ),
                 ),
               ),
