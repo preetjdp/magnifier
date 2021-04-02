@@ -5,7 +5,7 @@ repository: https://github.com/preetjdp/magnifier
 homepage: https://github.com/preetjdp/magnifier
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
