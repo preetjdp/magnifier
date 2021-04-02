@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
               Expanded(child: MyHomePage(title: 'Magnifier Demo')),
               Row(
                 children: [
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       setState(() {
                         enabled = !enabled;
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                     },
                     child: Text(enabled ? "Disable" : "Enable"),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       setState(() {
                         useCrossHair = !useCrossHair;
