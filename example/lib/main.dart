@@ -12,14 +12,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool enabled = true;
-  double size = 40;
-  double scale = 1.2;
+  double size = 120;
+  double scale = 3.2;
   bool useCrossHair = true;
   @override
   Widget build(BuildContext context) {
     return Magnifier(
       enabled: enabled,
-      painter: useCrossHair ? CrosshairMagnifierPainter(color: Colors.red,strokeWidth: 30) : MagnifierPainter(strokeWidth: 20),
+      painter: useCrossHair ? CrosshairMagnifierPainter(color: Colors.red,strokeWidth: 8.0) : MagnifierPainter(strokeWidth: 20),
       scale: scale,
       size: Size(size, size),
       child: MaterialApp(
@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key,required this.title}) : super(key: key);
 
   final String title;
 
